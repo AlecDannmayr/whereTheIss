@@ -17,7 +17,8 @@
 
     <style>
         #IssMap {
-            height: 180px;
+            height: 480px;
+            width: 600px;
         }
     </style>
 </head>
@@ -33,7 +34,12 @@
 
     <div id="IssMap"></div>
     <script>
-        const map = L.map('IssMap').setView([51.505, -0.09], 13);
+        const map = L.map('IssMap').setView([0, 0], 1);
+
+        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(map);
         const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 
