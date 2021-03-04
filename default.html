@@ -17,20 +17,21 @@
 
     <style>
         #IssMap {
-            height: 480px;
-            width: 600px;
+            height: 400px;
+            width: 800px;
         }
 
         .wrapper {
-            width: 600px;
+            width: 800px;
             margin: 0 auto;
             text-align: center;
-
         }
 
         body {
             color: white;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 17px;
+            letter-spacing: 2px;
         }
 
         #IssMap {
@@ -54,8 +55,8 @@
         <h1>Where is the ISS</h1>
 
         <p>
-            Latitude: <span id="lat"></span><br>
-            longitude: <span id="lon"></span>
+            Latitude: <br><span id="lat"></span><br><br>
+            longitude: <br><span id="lon"></span>
         </p>
         <div id="IssMap"></div>
         <script>
@@ -66,6 +67,9 @@
                 iconSize: [100, 64],
                 iconAnchor: [25, 16],
             });
+
+
+            let firstTime = true;
 
             const marker = L.marker([0, 0], { icon: issIcon }).addTo(map);
 
@@ -82,7 +86,10 @@
                 const { latitude, longitude } = data;
 
                 marker.setLatLng([latitude, longitude]);
-
+                if (firstTime) {
+                    map.setView([latitude, longitude], 3);
+                    firstTime = false;
+                }
                 document.getElementById('lat').textContent = latitude;
                 document.getElementById('lon').textContent = longitude;
                 console.log(latitude);
@@ -90,7 +97,7 @@
             }
             getIss();
 
-
+            setInterval(getIss, 1000);
         </script>
     </div>
 </body>
