@@ -85,14 +85,14 @@
             async function getIss() {
                 const response = await fetch(api_url);
                 const data = await response.json();
-                const { latitude, longitude, altitude } = data;
+                const { latitude, longitude, altitude, velocity } = data;
 
                 marker.setLatLng([latitude, longitude]);
                 if (firstTime) {
                     map.setView([latitude, longitude], 3);
                     firstTime = false;
                 }
-
+                document.getElementById('vol').textContent = altitude.toFixed(2);
                 document.getElementById('alt').textContent = altitude.toFixed(2);
                 document.getElementById('lat').textContent = latitude.toFixed(2);
                 document.getElementById('lon').textContent = longitude.toFixed(2);
