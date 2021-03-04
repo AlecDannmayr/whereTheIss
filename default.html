@@ -58,7 +58,8 @@
         <p>
             Latitude: <span id="lat"></span>°
             Longitude: <span id="lon"></span>°<br><br>
-            Altitude: <span id="alt"></span>
+            Altitude: <span id="alt"></span> km <span>(</span><span id="altMph"></span><span> mi)</span>
+            velocity: <span id="vol"></span> km/h <span>(</span><span id="volMph"></span><span> mp/h)</span>
         </p>
         <div id="IssMap"></div>
         <script>
@@ -86,13 +87,18 @@
                 const response = await fetch(api_url);
                 const data = await response.json();
                 const { latitude, longitude, altitude, velocity } = data;
+                const velMph = velocity * 0.62137119223733;
+                const altMph = altitude * 0.62137119223733;
+
 
                 marker.setLatLng([latitude, longitude]);
                 if (firstTime) {
                     map.setView([latitude, longitude], 3);
                     firstTime = false;
                 }
-                document.getElementById('vol').textContent = altitude.toFixed(2);
+                document.getElementById('altMph').textContent = altMph.toFixed(2);
+                document.getElementById('volMph').textContent = velMph.toFixed(2);
+                document.getElementById('vol').textContent = velocity.toFixed(2);
                 document.getElementById('alt').textContent = altitude.toFixed(2);
                 document.getElementById('lat').textContent = latitude.toFixed(2);
                 document.getElementById('lon').textContent = longitude.toFixed(2);
