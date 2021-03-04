@@ -25,11 +25,24 @@
             width: 600px;
             margin: 0 auto;
             text-align: center;
+
+        }
+
+        body {
+            color: white;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
 
         #IssMap {
-            border: 5px yellow solid;
-            ;
+            opacity: 0.9;
+            margin-top: 2vw;
+        }
+
+        body {
+            background-image: url(astronaut.jpg);
+            background-position: center;
+            background-size: 100%;
+            background-repeat: cover;
         }
     </style>
 </head>
@@ -44,7 +57,6 @@
             Latitude: <span id="lat"></span><br>
             longitude: <span id="lon"></span>
         </p>
-
         <div id="IssMap"></div>
         <script>
             const map = L.map('IssMap').setView([0, 0], 1);
@@ -68,6 +80,9 @@
                 const response = await fetch(api_url);
                 const data = await response.json();
                 const { latitude, longitude } = data;
+
+                marker.setLatLng([latitude, longitude]);
+
                 document.getElementById('lat').textContent = latitude;
                 document.getElementById('lon').textContent = longitude;
                 console.log(latitude);
