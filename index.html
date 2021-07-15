@@ -25,8 +25,9 @@
             width: 800px;
             margin: 0 auto;
             text-align: center;
-            margin-top: 4.6vw;
+            padding:10px
         }
+        
 
         body {
             color: white;
@@ -38,6 +39,9 @@
         #IssMap {
             opacity: 0.9;
             margin-top: 2vw;
+        }
+        .wrapper2{
+            padding:10px
         }
 
         body {
@@ -53,15 +57,16 @@
 
     <div class="wrapper">
 
-        <h1>Where is the ISS</h1>
+        <h1 class="wrapper2">Where is the ISS</h1>
 
-        <p>
-            Latitude: <span id="lat"></span>°
-            Longitude: <span id="lon"></span>°<br><br>
-            Altitude: <span id="alt"></span> km <span>(</span><span id="altMph"></span><span> mi)</span>
-            Velocity: <span id="vol"></span> km/h <span>(</span><span id="volMph"></span><span> mp/h)</span>
-        </p>
-        <div id="IssMap"></div>
+        <p> Latitude: <span id="lat"></span>°</p>
+
+        <p>  Longitude: <span id="lon"></span>°</p>
+            
+          <p>  Altitude: <span id="alt"></span> km <span>(</span><span id="altMph"></span><span>mi)</span></p>
+          <p>  Velocity: <span id="vol"></span> km/h <span>(</span><span id="volMph"></span><span>mp/h)</span></p>
+       
+        <div id="IssMap" class="wrapper2"></div>
         <script>
             const map = L.map('IssMap').setView([0, 0], 1);
 
@@ -83,9 +88,9 @@
             const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 
-            function getIss() {
-                const response = fetch(api_url);
-                const data = response.json();
+           async function getIss() {
+                const res = await fetch(api_url);
+                const data = await res.json();
                 const { latitude, longitude, altitude, velocity } = data;
                 //   const velMph = velocity * 0.62137119223733;
                 // const altMph = altitude * 0.62137119223733;
@@ -96,20 +101,17 @@
                     map.setView([latitude, longitude], 3);
                     firstTime = false;
                 }
-                document.getElementById('altMph').textContent = altMph.toFixed(2);
-                document.getElementById('volMph').textContent = velMph.toFixed(2);
-                document.getElementById('vol').textContent = velocity.toFixed(2);
-                document.getElementById('alt').textContent = altitude.toFixed(2);
-                document.getElementById('lat').textContent = latitude.toFixed(2);
-                document.getElementById('lon').textContent = longitude.toFixed(2);
+
+                document.getElementById('vol').textContent = velocity
+                document.getElementById('alt').textContent = altitude
+                document.getElementById('lat').textContent = latitude
+                document.getElementById('lon').textContent = longitude
                 console.log(latitude);
                 console.log(longitude);
-
-
             }
             getIss();
 
-            setInterval(getIss, 1000);
+            setInterval(getIss, 1005);
         </script>
     </div>
 </body>
