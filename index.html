@@ -83,9 +83,9 @@
             const api_url = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 
-            function getIss() {
-                const res = fetch(api_url);
-                const data = res.json();
+           async function getIss() {
+                const res = await fetch(api_url);
+                const data = await res.json();
                 const { latitude, longitude, altitude, velocity } = data;
                 //   const velMph = velocity * 0.62137119223733;
                 // const altMph = altitude * 0.62137119223733;
