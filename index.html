@@ -25,9 +25,9 @@
             width: 800px;
             margin: 0 auto;
             text-align: center;
-            margin-top: 4.6vw;
             padding:10px
         }
+        
 
         body {
             color: white;
@@ -39,6 +39,9 @@
         #IssMap {
             opacity: 0.9;
             margin-top: 2vw;
+        }
+        .wrapper2{
+            padding:10px
         }
 
         body {
@@ -54,15 +57,15 @@
 
     <div class="wrapper">
 
-        <h1>Where is the ISS</h1>
+        <h1 class="wrapper2">Where is the ISS</h1>
 
-        <p>
+        <p class="wrapper2">
             Latitude: <span id="lat"></span>°
             <br>Longitude: <span id="lon"></span>°<br>
             Altitude: <span id="alt"></span> km <span>(</span><span id="altMph"></span><span> mi)</span><br>
             Velocity: <span id="vol"></span> km/h <span>(</span><span id="volMph"></span><span> mp/h)</span>
         </p>
-        <div id="IssMap"></div>
+        <div id="IssMap" class="wrapper2"></div>
         <script>
             const map = L.map('IssMap').setView([0, 0], 1);
 
