@@ -84,8 +84,8 @@
 
 
             function getIss() {
-                const response = fetch(api_url);
-                const data = response.json();
+                const res = fetch(api_url);
+                const data = res.json();
                 const { latitude, longitude, altitude, velocity } = data;
                 //   const velMph = velocity * 0.62137119223733;
                 // const altMph = altitude * 0.62137119223733;
