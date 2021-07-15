@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -98,12 +96,12 @@
                     map.setView([latitude, longitude], 3);
                     firstTime = false;
                 }
-                document.getElementById('altMph').textContent = altMph.toFixed(2);
-                document.getElementById('volMph').textContent = velMph.toFixed(2);
-                document.getElementById('vol').textContent = velocity.toFixed(2);
-                document.getElementById('alt').textContent = altitude.toFixed(2);
-                document.getElementById('lat').textContent = latitude.toFixed(2);
-                document.getElementById('lon').textContent = longitude.toFixed(2);
+                document.getElementById('altMph').textContent = altMph
+                document.getElementById('volMph').textContent = velMph
+                document.getElementById('vol').textContent = velocity
+                document.getElementById('alt').textContent = altitude
+                document.getElementById('lat').textContent = latitude
+                document.getElementById('lon').textContent = longitude
                 console.log(latitude);
                 console.log(longitude);
 
