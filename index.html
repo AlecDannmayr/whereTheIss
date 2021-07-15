@@ -57,7 +57,7 @@
 
         <p>
             Latitude: <span id="lat"></span>°
-            Longitude: <span id="lon"></span>°<br><br>
+            <br>Longitude: <span id="lon"></span>°<br>
             Altitude: <span id="alt"></span> km <span>(</span><span id="altMph"></span><span> mi)</span><br>
             Velocity: <span id="vol"></span> km/h <span>(</span><span id="volMph"></span><span> mp/h)</span>
         </p>
@@ -99,16 +99,14 @@
 
                 document.getElementById('vol').textContent = velocity
                 document.getElementById('alt').textContent = altitude
-                document.getElementById('lat').textContent = latitude.toString().split('.')[0]
-                document.getElementById('lon').textContent = longitude.toString().split('.')[0]
+                document.getElementById('lat').textContent = latitude
+                document.getElementById('lon').textContent = longitude
                 console.log(latitude);
                 console.log(longitude);
-
-
             }
             getIss();
 
-            setInterval(getIss, 1000);
+            setInterval(getIss, 1005);
         </script>
     </div>
 </body>
