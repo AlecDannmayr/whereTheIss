@@ -8,7 +8,6 @@
     <title>Where The Iss At?</title>
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
     <style>
@@ -42,6 +41,19 @@
             background-size: 120%;
             background-repeat: repeat;
         }
+
+        .div-map {
+            display: flex;
+            justify-content: center;
+        }
+
+        .raw-data-panel {
+            background-color: rgba(181, 190, 165, 0.2);;
+        }
+
+        .heading {
+            background-color: black;
+        }
     </style>
 </head>
 
@@ -57,9 +69,14 @@
             Altitude: <span id="alt"></span> km <span>(</span><span id="altMph"></span><span> mi)</span>
             Velocity: <span id="vol"></span> km/h <span>(</span><span id="volMph"></span><span> mp/h)</span>
         </p>
+        <div class="div-map">
         <div id="IssMap"></div>
+        <div class="raw-data-panel">
+            <div class="heading"></div>
+        </div>
+        </div>
         <script>
-            const map = L.map('IssMap').setView([0, 0], 1);
+            const map = L.map('IssMap').setView([10, 0], 1);
 
             var issIcon = L.icon({
                 iconUrl: 'iss.png',
@@ -88,10 +105,8 @@
 
 
                 marker.setLatLng([latitude, longitude]);
-                if (firstTime) {
-                    map.setView([latitude, longitude], 3);
-                    firstTime = false;
-                }
+                    map.setView([latitude, longitude]);
+
                 document.getElementById('altMph').textContent = altMph.toFixed(2);
                 document.getElementById('volMph').textContent = velMph.toFixed(2);
                 document.getElementById('vol').textContent = velocity.toFixed(2);
@@ -106,6 +121,12 @@
             getIss();
 
             setInterval(getIss, 1000);
+              map.setZoom(3);
+
+
+
+           
+
         </script>
     </div>
 </body>
